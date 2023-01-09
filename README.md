@@ -6,6 +6,12 @@ This solution is a replacement of the built-in compromised_password_checker.ps1 
 # Support
 One Identity open source projects are supported through One Identity GitHub issues and the One Identity Community. This includes all scripts, plugins, SDKs, modules, code snippets or other solutions. For assistance with any One Identity GitHub project, please raise a new Issue on the One Identity GitHub project page. You may also visit the One Identity Community to ask questions. Requests for assistance made through official One Identity Support will be referred back to GitHub and the One Identity Community forums where those requests can benefit all users.
 
+# Files
+- Confirm-PwnedPassword.ps1
+  - This is a standalone Powershell script that you can use to check passwords against the HaveIBeenPwned PwnedPasswords database. It can take either the 5 character prefix of a pre-computed SHA-1 Hash, or a plaintext password. Be sure to refer to the [API Documentation](https://haveibeenpwned.com/API/v3#PwnedPasswords) to understand how this works. The included function is also copied in the primary `compromised_password_checker.ps1` replacement script.
+- compromised_password_checker.ps1
+  - This is a replacement for the default Password Manager script. It will provide the 5-character prefix of the pre-computed SHA1 hash, calculated by Password Manager, to the PwnedPasswords API.
+
 # Requirements & Dependencies
 * TLS 1.2 must be enabled on the Password Manager app server. This is enabled by default in Windows Server 2019.
 * Powershell must be able to reach out to the https://api.pwnedpasswords.com API endpoint
