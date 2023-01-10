@@ -8,7 +8,7 @@ One Identity open source projects are supported through One Identity GitHub issu
 
 # Files
 - Confirm-PwnedPassword.ps1
-  - This is a standalone Powershell script that you can use to check passwords against the HaveIBeenPwned PwnedPasswords database. It can take either the 5 character prefix of a pre-computed SHA-1 Hash, or a plaintext password. Be sure to refer to the [API Documentation](https://haveibeenpwned.com/API/v3#PwnedPasswords) to understand how this works. The included function is also copied in the primary `compromised_password_checker.ps1` replacement script.
+  - This is a standalone Powershell script that you can use to check passwords against the HaveIBeenPwned PwnedPasswords database. It can take either a pre-computed SHA-1 Hash, or a plaintext password. Be sure to refer to the [API Documentation](https://haveibeenpwned.com/API/v3#PwnedPasswords) to understand how this works. The included function is also copied in the primary `compromised_password_checker.ps1` replacement script.
 - compromised_password_checker.ps1
   - This is a replacement for the default Password Manager script. It will provide the 5-character prefix of the pre-computed SHA1 hash, calculated by Password Manager, to the PwnedPasswords API.
 
