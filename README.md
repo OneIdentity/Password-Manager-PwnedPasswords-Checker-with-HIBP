@@ -1,5 +1,5 @@
 # One Identity Password Manager Compromised Credential Checker with Have I Been Pwned
-[Read the One Identity Blog Post](https://www.oneidentity.com/community/blogs/b/one-identity/posts/eliminate-compromised-passwords-with-password-manager-and-have-i-been-pwned) for additional information. 
+[Read the One Identity Blog Post](https://www.oneidentity.com/community/blogs/b/one-identity/posts/eliminate-compromised-passwords-with-password-manager-and-have-i-been-pwned) for additional information or learn more about [privileged password management](https://www.oneidentity.com/what-is-privileged-password-management/) on our Learning Hub.
 
 This repository contains a script for validating passwords set in One Identity Password Manager against the Have I Been Pwned PwnedPasswords database, using its completely free API. This allows you to ensure that your users are not setting passwords that are known to be compromised.
 
