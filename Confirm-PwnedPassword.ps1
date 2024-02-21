@@ -27,7 +27,12 @@ function Confirm-PwnedPassword {
 
         [parameter(position=1,mandatory,ParameterSetName="Hash")]
         [string]
-        $HashedPassword
+        $HashedPassword,
+
+        [parameter(position=2,ParameterSetName="Hash")]
+        [ValidateSet("SHA1","NTLM")]
+        [string]
+        $HashFormat = "SHA1" 
     )
 
     if ($PSCmdlet.ParameterSetName -eq "Plaintext") {
@@ -40,6 +45,10 @@ function Confirm-PwnedPassword {
     # See details here: https://haveibeenpwned.com/API/v3#SearchingPwnedPasswordsByRange
     $hashPrefix = $HashedPassword.Substring(0,5)
     $url = "https://api.pwnedpasswords.com/range/$hashPrefix"
+
+    If ($HashFormat -eq "NTLM") {
+        $url += "?mode=ntlm"
+    }
 
     # Enable TLS 1.2 for the web call
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
