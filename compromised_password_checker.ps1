@@ -13,7 +13,7 @@
             AJ Lindner (AJ.Lindner@OneIdentity.com)
 
         Last Modified:
-            October 28, 2022
+            February 27, 2024
 
         One Identity open source projects are supported through One Identity GitHub issues and the One Identity Community.
         This includes all scripts, plugins, SDKs, modules, code snippets or other solutions. For assistance with any One Identity GitHub project,
@@ -23,20 +23,23 @@
 
     .SYNOPSIS
         A functional version of the Compromised Password Checker script for Password Manager
-        that uses the FREE HaveIBeenPwned API instead of the paid default CredVerify solution
+        that uses the FREE HaveIBeenPwned PwnedPasswords API as an alternative to the default
+        solution, VeriClouds CredVerify (https://www.vericlouds.com/oneidentity/).
 
     .DESCRIPTION
+        This script is an alternative version of the One Identity Password Manager
+        compromised_password_checker.ps1 script that is run when the extensibility setting
+        "Credential Checker on" is enabled. This script utilizes the completely free PwnedPasswords
+        API provided by HaveIBeenPwned.com.
+
+        The function names, parameters, and outputs are required by PWM and HIBP and should
+        not be modified.
+
+        To use:
         Overwrite the original "compromised_password_checker.ps1" file in the
         Service\Resources\CredentialChecker directory of your Password Manager Installation
         The default location is:
         C:\Program Files\One Identity\Password Manager\Service\Resources\CredentialChecker
-
-        A rewrite of the Password Manager compromised_password_checker.ps1 script to work
-        properly with the "Credential Checker on" setting, but using the FREE API endpoint
-        from HaveIBeenPwned.com instead of the paid default, Vericlouds CredVerify.
-
-        The function names, parameters, and outputs are required by PWM and HIBP and should
-        not be modified.
 
 #>
 
@@ -122,9 +125,9 @@ function Test-IsCompromisedCredential
     # passes that in for the $passwordHash parameter.
 
     # username is in the OOTB function, so it was left as a non-mandatory
-    # parameter, but is not needed for the HIBP API call. VeriClouds uses both the username
-    # and the password to provide a full credentials check, while HaveIBeenPwned is only
-    # checking if the password itself has been compromised
+    # parameter, but is not needed for the HIBP API call. Some services, like VeriClouds Credverify
+    # include an option to check if the entire Credential Pair is compromised vs. just the password.
+    # Both the default CredVerify integration and this HIBP integration currently just check the password.
 
     param(
 
